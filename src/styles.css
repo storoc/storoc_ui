@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+    font-family: 'sf_pro_displaymedium';
+}
+
+.separator {
+    border-color: lightgray;
+    border-width: thin;
+}
+
+@font-face {
+    font-family: 'code_lightregular';
+    src: url('./assets/fonts/code_light-webfont.woff2') format('woff2'), url('./assets/fonts/code_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'geosanslightregular';
+    src: url('./assets/fonts/geosanslight-webfont.woff2') format('woff2'), url('./assets/fonts/geosanslight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sf_pro_displaymedium';
+    src: url('./assets/fonts/sfprodisplay-medium-webfont.woff2') format('woff2'), url('./assets/fonts/sfprodisplay-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

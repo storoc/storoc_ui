@@ -1,0 +1,40 @@
+<div class=" main-container">
+
+    <!-- STOROC Home Page Label -->
+    <h1 class='storoc-text'>STOROC</h1>
+
+    <!-- Search Box Component-->
+    <app-search-box (selectedPlaceEvent)="receivePlace($event)"></app-search-box>
+
+    <hr>
+
+    <!-- Search Results -->
+    <div *ngIf="selectedPlace">
+        <p>
+            <span class="results-place-name">
+                {{selectedPlace.name}}<br>
+            </span>
+            {{selectedPlace.formatted_address}}
+        </p>
+        <hr class="separator">
+
+        <!-- The occupancy data must be fetched from the server -->
+        <p *ngIf="resultPlaceOccupancy else loading">
+            place_id: {{selectedPlace.place_id}}<br>
+            occupancy: {{resultPlaceOccupancy}}
+        </p>
+
+        <ng-template #loading>
+            <div class="loading-text">Loading...</div>
+        </ng-template>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p class="footer-text">
+        occupancy monitoring system<br>
+        <a href="mailto:hello-storoc@umich.edu">hello-storoc@umich.edu</a><br>
+    </p>
+</div>

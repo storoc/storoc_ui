@@ -15,12 +15,16 @@ import { HomeComponent } from './home/home.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchBoxComponent,
+    SearchResultsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

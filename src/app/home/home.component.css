@@ -15,35 +15,3 @@
 .loading-text {
     text-align: center;
 }
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: black;
-    text-align: center;
-}
-.footer-text {
-    font-family: "geosanslight";
-}
-
-/* unvisited link */
-a:link {
-    font-family: "geosanslight";
-    color: black;
-}
-
-/* visited link */
-a:visited {
-    color: black;
-}
-
-/* mouse over link */
-a:hover {
-    color: gray;
-}
-
-/* selected link */
-a:active {
-    color: lightgray;
-}

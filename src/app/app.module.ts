@@ -17,6 +17,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FooterComponent } from './footer/footer.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
     SearchBoxComponent,
     SearchResultsComponent,
     FooterComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

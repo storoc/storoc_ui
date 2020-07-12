@@ -1,14 +1,26 @@
-<div class=" main-container">
+<div class="main-container">
 
-    <!-- STOROC Home Page Label -->
-    <h1 class='storoc-text'>STOROC</h1>
+    <!-- INFORMATION PANEL -->
+    <div class="information-panel">
 
-    <!-- Search Box Component -->
-    <app-search-box ></app-search-box>
-    <hr>
+        <!-- PANEL ELEMENTS -->
+        <div class="panel-elements">
 
-    <!-- Search Results Component -->
-    <app-search-results></app-search-results>
+            <h1 class='storoc-text'>STOROC</h1>
+
+            <app-search-box class='panel-element'></app-search-box>
+            <hr>
+
+            <app-search-results class='panel-element'></app-search-results>
+        </div>
+
+        <!-- FOOTER -->
+        <app-footer class='footer'></app-footer>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-container">
+        <app-map></app-map>
+    </div>
+
 </div>
-
-<app-footer></app-footer>

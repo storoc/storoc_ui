@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,13 @@ export class ApiService {
   apiUrlAppended: string;
 
   constructor(private httpClient: HttpClient) { }
-  
-  public getPlaceData(place_id: string) {
+
+  public getLocationData(place_id: string) {
 
     // api call to server
-    console.log('place_id: ', place_id);
+    // returns an Observable of LocationData
     this.apiUrlAppended = this.apiUrl + '?unique_id=' + place_id;
-    console.log('api_url_appended:', this.apiUrlAppended);
+    console.log('made api call to ', this.apiUrlAppended);
     return this.httpClient.get(this.apiUrlAppended);
   }
 }

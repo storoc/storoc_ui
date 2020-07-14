@@ -1,0 +1,5 @@
+#map-container {
+    position: static;
+    height: 100%;
+    background-color: lightsalmon;
+}

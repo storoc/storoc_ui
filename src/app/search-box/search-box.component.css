@@ -1,0 +1,9 @@
+#search-box-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#input {
+    width: 200px;
+}

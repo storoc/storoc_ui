@@ -1,3 +1,30 @@
+<!-- Search Results -->
 <div id="search-results-container">
-    Search-Results
+
+    <div *ngIf="this.placeResult">
+        <p>
+            <span id="results-name">
+                {{placeResult.name}}<br>
+            </span>
+            <span id="results-address">
+                {{placeResult.formatted_address}}
+            </span>
+            
+        </p>
+        <hr class="separator">
+    
+        <p *ngIf="this.locationData else loading">
+            <!--
+            place_id: {{placeResult.place_id}}<br>
+            -->
+            <span id="results-information">
+                occupancy: {{locationData.current_occupancy}}
+            </span>
+        </p>
+    
+        <ng-template #loading>
+            <div id="loading-text">Loading...</div>
+        </ng-template>
+    </div>
+
 </div>

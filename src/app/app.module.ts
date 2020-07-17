@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AgmCoreModule} from '@agm/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 
 // Componenet imports
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 
 import { environment } from 'src/environments/environment';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -25,19 +26,19 @@ import { environment } from 'src/environments/environment';
     MapComponent,
     FooterComponent,
     SearchBoxComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    MatGoogleMapsAutocompleteModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKey,
       libraries: ['places']
     }),
     HttpClientModule,
-    GooglePlaceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

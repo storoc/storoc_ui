@@ -1,5 +1,3 @@
 <div id="search-box-container">
-    <label>
-        <input id="input" placeholder="Search">
-    </label>
+    <app-autocomplete (setAddress)="onAutocompleteSelected($event)" adressType="establishment"></app-autocomplete >
 </div>

@@ -1,3 +1,16 @@
 #search-results-container {
     margin: 20px;
 }
+#results-name {
+    font-size: large;
+}
+#results-address {
+    font-size: medium;
+}
+#results-information {
+    font-size: medium;
+}
+
+#loading-text {
+    text-align: center;
+}

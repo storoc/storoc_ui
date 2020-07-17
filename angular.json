@@ -121,7 +121,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/storoc-ui/server",
+            "outputPath": "dist/storoc/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -142,21 +142,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "storoc-ui:build",
-            "serverTarget": "storoc-ui:server"
+            "browserTarget": "storoc:build",
+            "serverTarget": "storoc:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "storoc-ui:build:production",
-              "serverTarget": "storoc-ui:server:production"
+              "browserTarget": "storoc:build:production",
+              "serverTarget": "storoc:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "storoc-ui:build:production",
-            "serverTarget": "storoc-ui:server:production",
+            "browserTarget": "storoc:build:production",
+            "serverTarget": "storoc:server:production",
             "routes": [
               "/"
             ]

@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "app": {
+        "project": "storoc",
+        "target": "build",
+        "configuration": "production",
+        "path": "dist/storoc"
+      },
+      "azureHosting": {
+        "subscription": "076996fb-9dee-4b4b-b063-4fc1c04231ef",
+        "resourceGroupName": "storoc-static-deploy40",
+        "account": "storocstatic"
+      }
+    }
+  ]
+}

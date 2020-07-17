@@ -19,7 +19,9 @@
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
+    "@azure/ng-deploy": "^0.2.3",
     "@types/googlemaps": "^3.39.9",
+    "ngx-google-places-autocomplete": "^2.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

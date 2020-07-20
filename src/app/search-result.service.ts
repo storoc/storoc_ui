@@ -13,6 +13,8 @@ export class SearchResultService {
   currentPlaceData = this.placeDataSource.asObservable();
   private serverDataSource = new BehaviorSubject(null);
   currentServerData = this.serverDataSource.asObservable();
+  private dataExists = new BehaviorSubject<Boolean>(true);
+  currentDataExists = this.dataExists.asObservable();
 
   constructor(private apiService: ApiService) {
   }
@@ -22,7 +24,14 @@ export class SearchResultService {
     this.apiService.getLocationData(place_id).subscribe(
       data => { this.serverDataSource.next(data); },
       err => console.error(err),
-      () => { console.log('done loading location data from storoc server') }
+      () => { 
+        console.log('done loading location data from storoc server');
+        if (this.serverDataSource.getValue()) {
+          this.dataExists.next(true);
+        } else {
+          this.dataExists.next(false);
+        }
+       }
     );
   }
 
@@ -32,6 +41,5 @@ export class SearchResultService {
     this.placeDataSource.next(place);
     // Update server data
     this.setLocationData(place.place_id);
-    console.log('changePlace() called');
   }
 }

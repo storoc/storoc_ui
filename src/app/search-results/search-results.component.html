@@ -13,7 +13,9 @@
         </p>
         <hr class="separator">
     
-        <p *ngIf="serverData else loading">
+
+
+        <p *ngIf="serverData else noResponse">
             <!--
             place_id: {{placeResult.place_id}}<br>
             -->
@@ -22,8 +24,14 @@
             </span>
         </p>
     
-        <ng-template #loading>
-            <div id="loading-text">Loading...</div>
+        <ng-template #noResponse>
+            <div *ngIf="!dataExists else loading" id="no-data-text">
+                This location does not have a STOROC sensor installed. 
+            </div>
+
+            <ng-template #loading>
+                <div id="loading-text">Loading...</div>
+            </ng-template>
         </ng-template>
     </div>
 

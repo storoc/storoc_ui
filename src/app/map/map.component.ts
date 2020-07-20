@@ -1,18 +1,16 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { SearchResultService } from '../search-result.service';
 import PlaceResult = google.maps.places.PlaceResult;
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
-  
+  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
+
   map: google.maps.Map;
   lat = 42.2780;
   lng = -83.7382;
@@ -28,12 +26,17 @@ export class MapComponent implements OnInit {
     map: this.map,
   })
 
-  constructor(private searchResultService: SearchResultService) {}
+  placeData: PlaceResult;
 
-  ngOnInit(): void {
+  constructor(private searchResultService: SearchResultService, private chRef: ChangeDetectorRef) {
+  }
+
+  ngOnInit() {
     this.searchResultService.currentPlaceData.subscribe((place) => {
+      this.placeData = place;
+      this.chRef.detectChanges();
       this.changeLocation(place);
-    })
+    });
   }
 
   ngAfterViewInit() {
@@ -43,16 +46,21 @@ export class MapComponent implements OnInit {
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
+    this.marker.setVisible(false);
   }
 
   changeLocation(place: PlaceResult) {
-    this.lat = place.geometry.location.lat();
-    this.lng = place.geometry.location.lng();
-    this.coordinates = new google.maps.LatLng(this.lat, this.lng);
+    if (this.coordinates && place) {
+      this.coordinates = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+    }
 
+    if (this.map) {
+      this.map.panTo(this.coordinates);
+    }
 
-    this.map.panTo(this.coordinates);
-    this.marker.setPosition(this.coordinates);
-    console.log('changeLocation() called with ', this.coordinates);
+    if (this.marker) {
+      this.marker.setPosition(this.coordinates);
+      this.marker.setVisible(true);
+    }
   }
 }

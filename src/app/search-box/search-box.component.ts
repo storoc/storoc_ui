@@ -26,7 +26,6 @@ export class SearchBoxComponent {
   // When user selects an option from autocomplete 
   onAutocompleteSelected(place: PlaceResult) {
     this.searchResultService.changePlace(place);
-    console.log('onAutocompleteSelected()');
   }
 
 

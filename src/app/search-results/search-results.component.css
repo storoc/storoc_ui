@@ -13,4 +13,10 @@
 
 #loading-text {
     text-align: center;
+    font-size: medium;
+}
+
+#no-data-text {
+    text-align: center;
+    font-size: medium;
 }

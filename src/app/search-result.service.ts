@@ -14,35 +14,24 @@ export class SearchResultService {
   private serverDataSource = new BehaviorSubject(null);
   currentServerData = this.serverDataSource.asObservable();
 
-  constructor(private apiService: ApiService) {}
-
-  // Change the current place by updating placeData and serverData
-  changePlace(result: PlaceResult) {
-
-    // Update place data
-    this.placeDataSource.next(result);
-
-    // Update server data
-    this.updateServerData(result.place_id);
-  }
-
-  getPlaceData() {
-    return this.placeDataSource.asObservable();
-  }
-
-  getServerData() {
-    return this.serverDataSource.asObservable();
+  constructor(private apiService: ApiService) {
   }
 
   // get location data from storoc server using api service
-  updateServerData(place_id: string) {
-
+  public setLocationData(place_id: string) {
     this.apiService.getLocationData(place_id).subscribe(
-      data => { this.serverDataSource.next(data) },
+      data => { this.serverDataSource.next(data); },
       err => console.error(err),
-      () => { 
-        console.log('done loading location data from storoc server');
-       }
+      () => { console.log('done loading location data from storoc server') }
     );
+  }
+
+  // Change the current place by updating placeData and serverData
+  changePlace(place: PlaceResult) {
+    // Update place data
+    this.placeDataSource.next(place);
+    // Update server data
+    this.setLocationData(place.place_id);
+    console.log('changePlace() called');
   }
 }

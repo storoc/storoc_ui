@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResultService } from '../search-result.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import PlaceResult = google.maps.places.PlaceResult;
 
 /*
@@ -16,13 +19,22 @@ import PlaceResult = google.maps.places.PlaceResult;
 export class SearchResultsComponent implements OnInit {
 
   // All search result data taken from search result service
-  placeData: PlaceResult;   // current place data
-  serverData: any;          // current location data
+  placeData: PlaceResult;
+  serverData: any;
 
-  constructor(private searchResultService: SearchResultService) {}
+  constructor(private searchResultService: SearchResultService, private chRef: ChangeDetectorRef) {
+  }
 
   ngOnInit() {
-    this.searchResultService.currentPlaceData.subscribe(placeData => this.placeData = placeData);
-    this.searchResultService.currentServerData.subscribe(serverData => this.serverData = serverData);
+    this.searchResultService.currentPlaceData.subscribe((place) => {
+      this.placeData = place;
+      this.chRef.detectChanges();
+      console.log('place results placeData updated');
+    });
+    this.searchResultService.currentServerData.subscribe((data) => {
+      this.serverData = data;
+      this.chRef.detectChanges();
+      console.log('place results serverData updated');
+    });
   }
 }

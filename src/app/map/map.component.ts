@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SearchResultService } from '../search-result.service';
+import PlaceResult = google.maps.places.PlaceResult;
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-map',
@@ -29,6 +31,9 @@ export class MapComponent implements OnInit {
   constructor(private searchResultService: SearchResultService) {}
 
   ngOnInit(): void {
+    this.searchResultService.currentPlaceData.subscribe((place) => {
+      this.changeLocation(place);
+    })
   }
 
   ngAfterViewInit() {
@@ -40,9 +45,14 @@ export class MapComponent implements OnInit {
     this.marker.setMap(this.map);
   }
 
-  changeLocation(lat: number, lng: number) {
-    this.map.panTo({lat, lng});
-    this.marker.setPosition({lat, lng});
-    console.log('changeLocation() called with ', {lat, lng});
+  changeLocation(place: PlaceResult) {
+    this.lat = place.geometry.location.lat();
+    this.lng = place.geometry.location.lng();
+    this.coordinates = new google.maps.LatLng(this.lat, this.lng);
+
+
+    this.map.panTo(this.coordinates);
+    this.marker.setPosition(this.coordinates);
+    console.log('changeLocation() called with ', this.coordinates);
   }
 }

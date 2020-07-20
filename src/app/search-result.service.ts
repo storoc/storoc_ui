@@ -1,39 +1,48 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription, Subject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import PlaceResult = google.maps.places.PlaceResult;
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchResultService {
 
-  // PlaceResult returned from Google Places API
-  private placeResultSource = new BehaviorSubject<PlaceResult>(null);
-  currentPlaceResult = this.placeResultSource.asObservable();
-
-  // LocationData returned from storoc server
-  private locationDataSource = new BehaviorSubject(null);
-  currentLocationData = this.locationDataSource.asObservable();
+  // Shared data
+  private placeDataSource = new BehaviorSubject<PlaceResult>(null);
+  currentPlaceData = this.placeDataSource.asObservable();
+  private serverDataSource = new BehaviorSubject(null);
+  currentServerData = this.serverDataSource.asObservable();
 
   constructor(private apiService: ApiService) {}
 
-  // update the current search result data
-  updateSearchResult(result: PlaceResult) {
-    // update placeResult
-    this.placeResultSource.next(result);
-    // update location data
-    this.getLocationData(result.place_id);
+  // Change the current place by updating placeData and serverData
+  changePlace(result: PlaceResult) {
+
+    // Update place data
+    this.placeDataSource.next(result);
+
+    // Update server data
+    this.updateServerData(result.place_id);
+  }
+
+  getPlaceData() {
+    return this.placeDataSource.asObservable();
+  }
+
+  getServerData() {
+    return this.serverDataSource.asObservable();
   }
 
   // get location data from storoc server using api service
-  getLocationData(place_id: string) {
+  updateServerData(place_id: string) {
 
     this.apiService.getLocationData(place_id).subscribe(
-      data => { this.locationDataSource.next(data) },
+      data => { this.serverDataSource.next(data) },
       err => console.error(err),
-      () => { console.log('done loading location data from storoc server') }
+      () => { 
+        console.log('done loading location data from storoc server');
+       }
     );
   }
 }

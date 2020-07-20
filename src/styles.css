@@ -2,6 +2,52 @@
     font-family: 'sf_pro_displaymedium';
 }
 
+.button {
+    width: 100px;
+    background-color: white;
+    border: 1px solid #ccc;
+    color: black;
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #fcfcfc;
+    color: black;
+}
+
+.button:active {
+    background-color: white;
+    transform: scale(.99);
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+/* unvisited link */
+a:link {
+    color: black;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: gray;
+}
+
+/* selected link */
+a:active {
+    color: lightgray;
+}
+
 @font-face {
     font-family: 'code_lightregular';
     src: url('./assets/fonts/code_light-webfont.woff2') format('woff2'), url('./assets/fonts/code_light-webfont.woff') format('woff');

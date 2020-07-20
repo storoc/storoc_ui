@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  apiUrl: string = 'http://52.168.148.0/api';
+  apiUrl: string = 'https://storoc.live/api';
   apiUrlAppended: string;
 
   constructor(private httpClient: HttpClient) { }

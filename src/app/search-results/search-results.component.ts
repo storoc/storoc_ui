@@ -15,14 +15,14 @@ import PlaceResult = google.maps.places.PlaceResult;
 })
 export class SearchResultsComponent implements OnInit {
 
-  // All search result data taken from search result servi e
-  placeResult: PlaceResult;   // current place 
-  locationData: any;          // current location data
+  // All search result data taken from search result service
+  placeData: PlaceResult;   // current place data
+  serverData: any;          // current location data
 
   constructor(private searchResultService: SearchResultService) {}
 
   ngOnInit() {
-    this.searchResultService.currentPlaceResult.subscribe(placeResult => this.placeResult = placeResult)
-    this.searchResultService.currentLocationData.subscribe(locationData => this.locationData = locationData)
+    this.searchResultService.currentPlaceData.subscribe(placeData => this.placeData = placeData);
+    this.searchResultService.currentServerData.subscribe(serverData => this.serverData = serverData);
   }
 }

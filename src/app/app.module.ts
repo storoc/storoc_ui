@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule} from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import { Router } from '@angular/router';
 
 // Componenet imports
 import { AppComponent } from './app.component';
@@ -14,9 +15,12 @@ import { MapComponent } from './map/map.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { HelpComponent } from './help/help.component';
+import { AboutComponent } from './about/about.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 import { environment } from 'src/environments/environment';
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     FooterComponent,
     SearchBoxComponent,
     SearchResultsComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    HelpComponent,
+    AboutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

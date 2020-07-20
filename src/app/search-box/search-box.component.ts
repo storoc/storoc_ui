@@ -18,35 +18,16 @@ import PlaceResult = google.maps.places.PlaceResult;
 })
 export class SearchBoxComponent {
 
-  // shared using SearchResultService
-  placeResult: PlaceResult;
-
-  // Used by Google Maps
-  public zoom: number;
-  public latitude: number;
-  public longitude: number;
-
-  constructor(private apiService: ApiService, private searchResultService: SearchResultService) {}
+  constructor(private searchResultService: SearchResultService) {}
 
   ngOnInit(): void {
-    this.setCurrentPosition();
-  }
-
-  // Set the user's current position
-  private setCurrentPosition() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
   }
 
   // When user selects an option from autocomplete 
   onAutocompleteSelected(result: PlaceResult) {
-    this.searchResultService.updateSearchResult(result);
-    console.log('this.searchResultService.placeResult', this.searchResultService.currentPlaceResult);
-    console.log('onAutocompleteSelected DONE');
+    this.searchResultService.changePlace(result);
+    console.log('onAutocompleteSelected()');
   }
+
+
 }

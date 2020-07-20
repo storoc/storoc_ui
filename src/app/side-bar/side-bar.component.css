@@ -9,14 +9,7 @@
     z-index: 1;
     box-shadow: 0px 0px 5px grey;
 }
-#header-text {
-    font-family: 'code_lightregular';
-    text-align: center;
-    font-size: 300%;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-}
+
 .side-bar-element {
     flex-grow: 1;
 }

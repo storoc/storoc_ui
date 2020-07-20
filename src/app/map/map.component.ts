@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SearchResultService } from '../search-result.service';
 
 @Component({
   selector: 'app-map',
@@ -24,7 +26,7 @@ export class MapComponent implements OnInit {
     map: this.map,
   })
 
-  constructor() { }
+  constructor(private searchResultService: SearchResultService) {}
 
   ngOnInit(): void {
   }
@@ -36,5 +38,11 @@ export class MapComponent implements OnInit {
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
+  }
+
+  changeLocation(lat: number, lng: number) {
+    this.map.panTo({lat, lng});
+    this.marker.setPosition({lat, lng});
+    console.log('changeLocation() called with ', {lat, lng});
   }
 }

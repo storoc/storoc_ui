@@ -1,24 +1,24 @@
 <!-- Search Results -->
 <div id="search-results-container">
 
-    <div *ngIf="this.placeResult">
+    <div *ngIf="this.placeData">
         <p>
             <span id="results-name">
-                {{placeResult.name}}<br>
+                {{placeData.name}}<br>
             </span>
             <span id="results-address">
-                {{placeResult.formatted_address}}
+                {{placeData.formatted_address}}
             </span>
             
         </p>
         <hr class="separator">
     
-        <p *ngIf="this.locationData else loading">
+        <p *ngIf="this.serverData else loading">
             <!--
             place_id: {{placeResult.place_id}}<br>
             -->
             <span id="results-information">
-                occupancy: {{locationData.current_occupancy}}
+                Occupancy: {{serverData.current_occupancy}}
             </span>
         </p>
     

@@ -1,0 +1,15 @@
+#page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#text-block {
+    width: 80%;
+}
+
+#header {
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

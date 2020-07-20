@@ -1,0 +1,18 @@
+#header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+#header-text {
+    font-family: 'code_lightregular';
+    text-align: center;
+    font-size: 300%;
+}
+
+#page-name {
+    font-family: 'code_lightregular';
+    font-size: 300%;
+    color: #592832;
+}

@@ -5,7 +5,7 @@ import { AgmCoreModule} from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
-import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 // Componenet imports
 import { AppComponent } from './app.component';
@@ -18,9 +18,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
-
-import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './header/header.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -46,6 +45,7 @@ import { HeaderComponent } from './header/header.component';
       libraries: ['places']
     }),
     HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

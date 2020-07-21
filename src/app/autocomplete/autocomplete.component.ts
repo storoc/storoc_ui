@@ -26,6 +26,7 @@ export class AutocompleteComponent implements OnInit {
   }
 
   private getPlaceAutocomplete() {
+    
     const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement,
       {
         componentRestrictions: { country: 'US' },

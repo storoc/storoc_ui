@@ -20,6 +20,7 @@ import { AboutComponent } from './about/about.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { HeaderComponent } from './header/header.component';
 import { environment } from 'src/environments/environment';
+import { MobileHomeComponent } from './mobile-home/mobile-home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment';
     AutocompleteComponent,
     HelpComponent,
     AboutComponent,
-    HeaderComponent
+    HeaderComponent,
+    MobileHomeComponent
   ],
   imports: [
     BrowserModule,

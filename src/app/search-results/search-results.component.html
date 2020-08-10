@@ -2,31 +2,28 @@
 <div id="search-results-container">
 
     <div *ngIf="this.placeData">
-        <p>
-            <span id="results-name">
-                {{placeData.name}}<br>
-            </span>
-            <span id="results-address">
-                {{placeData.formatted_address}}
-            </span>
-            
-        </p>
+
+        <!-- Name/Address -->
+        <span id="results-name">
+            {{placeData.name}}<br>
+        </span>
+        <span id="results-address">
+            {{placeData.formatted_address}}
+        </span>
+
+        <!-- Separator -->
         <hr class="separator">
-    
 
-
+        <!-- Results -->
         <p *ngIf="serverData else noResponse">
-            <!--
-            place_id: {{placeResult.place_id}}<br>
-            -->
             <span id="results-information">
                 Occupancy: {{serverData.current_occupancy}}
             </span>
         </p>
-    
+
         <ng-template #noResponse>
             <div *ngIf="!dataExists else loading" id="no-data-text">
-                This location does not have a STOROC sensor installed. 
+                This location does not have a STOROC sensor installed.
             </div>
 
             <ng-template #loading>

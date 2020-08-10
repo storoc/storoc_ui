@@ -4,16 +4,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 300px;
+    width: 100%;
+    top: 60px;
     z-index: 1;
-    background-color: violet;
-}
-
-#header-container {
-    display: flex;
-    
-    align-items: center;
-    height: 100px;
 }
 
 .side-bar-element {

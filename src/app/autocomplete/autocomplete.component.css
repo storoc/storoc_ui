@@ -1,5 +1,7 @@
 #pac-input {
     padding: 12px 20px; 
     border: 1px solid #ccc;
-    width: 240px;
+    border-radius: 2px;
+    width: 280px;
+    box-shadow: 0 4px 8px -4px black;
 }

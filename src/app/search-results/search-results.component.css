@@ -1,6 +1,16 @@
+div:empty {
+    display: none;
+}
 #search-results-container {
-    margin: 20px;
-    word-wrap: break-word
+    max-width: 300px;
+    word-wrap: break-word;
+    background-color: #24252A;
+    color: #edf0f1;
+
+    padding: 12px 20px; 
+    border: 1px solid #2f3037;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px -4px black;
 }
 #results-name {
     font-size: x-large;

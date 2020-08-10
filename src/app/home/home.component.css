@@ -1,7 +1,10 @@
-#map-container {
-    position: fixed;
-    left: 300px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
+.page-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1;
+    background-color: #24252A;
 }

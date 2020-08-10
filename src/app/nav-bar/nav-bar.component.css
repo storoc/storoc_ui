@@ -1,0 +1,40 @@
+li, a, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header {
+    position: relative;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    border-bottom: thin solid #2f3037;
+    background-color: #24252A;
+    box-shadow: 0 4px 8px -8px black;
+    z-index: 10;
+}
+
+.logo {
+    cursor: pointer;
+    font-family: 'code_lightregular';
+    font-size: 36px;
+}
+
+button {
+    width: 110px;
+    padding: 9px 25px;
+    background-color: rgba(63, 171, 164, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.15s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(63, 171, 164, 0.8);
+}

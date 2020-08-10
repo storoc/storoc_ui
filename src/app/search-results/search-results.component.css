@@ -1,5 +1,6 @@
 #search-results-container {
     margin: 20px;
+    word-wrap: break-word
 }
 #results-name {
     font-size: x-large;

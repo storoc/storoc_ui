@@ -1,52 +1,4 @@
-* {
-    font-family: 'sf_pro_displaymedium';
-}
-
-.button {
-    width: 100px;
-    background-color: white;
-    border: 1px solid #ccc;
-    color: black;
-    padding: 10px 20px;
-    margin: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.button:hover {
-    background-color: #e8e8e8;
-    color: black;
-}
-
-.button:active {
-    background-color: white;
-    transform: scale(.99);
-}
-
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
-/* unvisited link */
-a:link {
-    color: black;
-}
-
-/* visited link */
-a:visited {
-    color: black;
-}
-
-/* mouse over link */
-a:hover {
-    color: gray;
-}
-
-/* selected link */
-a:active {
-    color: lightgray;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 @font-face {
     font-family: 'code_lightregular';
@@ -55,16 +7,27 @@ a:active {
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'geosanslightregular';
-    src: url('./assets/fonts/geosanslight-webfont.woff2') format('woff2'), url('./assets/fonts/geosanslight-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+* {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 
-@font-face {
-    font-family: 'sf_pro_displaymedium';
-    src: url('./assets/fonts/sfprodisplay-medium-webfont.woff2') format('woff2'), url('./assets/fonts/sfprodisplay-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+/* Color Palette
+
+
+Off-white - #edf0f1;
+
+Turquoise - rgba(63, 171, 164, 1)
+          - #3faba4
+
+Dark      - #24252A
+
+LessDark  - #2f3037
+
+*/

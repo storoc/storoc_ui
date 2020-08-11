@@ -15,35 +15,39 @@
         <hr class="separator">
 
         <!-- Results -->
-        <div *ngIf="serverData else noResponse">
+        <div *ngIf="loadingServerData else displayResults" id="loading-text">
+            Loading...
+        </div>
 
+        <ng-template #displayResults>
 
-            <div *ngIf="!maxDefined else noMaxDefined" id="results-information">
-                Occupancy: {{serverData.current_occupancy}}
+            <div *ngIf="current_occupancy else noData">
+
+                <div *ngIf="!maxDefined else noMaxDefined">
+                    Occupancy: {{current_occupancy}}
+                </div>
+    
+                <ng-template #noMaxDefined>
+                    <div id="results-information">
+                        Status:
+                        <span [ngClass]="{
+                                'low-occupancy' : occupancyPercent < 60,
+                                'high-occupancy' : occupancyPercent >= 60}">
+                            {{statusLabel}}
+                        </span>
+                        (at {{occupancyPercent}}% capacity)
+    
+                    </div>
+                </ng-template>
+
+                
             </div>
 
-            <ng-template #noMaxDefined>
-                <div id="results-information">
-                    Status: 
-                    <span [ngClass]="{
-                        'low-occupancy' : occupancyPercent < 60,
-                        'high-occupancy' : occupancyPercent >= 60}">
-                        {{statusLabel}}
-                    </span>
-                    (at {{occupancyPercent}}% capacity)
-
-                </div>
+            <ng-template #noData id="no-data-text">
+                This location does not have a STOROC sensor installed.
             </ng-template>
-        </div>
 
-            <ng-template #noResponse>
-                <div *ngIf="!dataExists else loading" id="no-data-text">
-                    This location does not have a STOROC sensor installed.
-                </div>
-
-                <ng-template #loading>
-                    <div id="loading-text">Loading...</div>
-                </ng-template>
-            </ng-template>
-        </div>
+            
+        </ng-template>
     </div>
+</div>

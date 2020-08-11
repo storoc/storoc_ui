@@ -20,7 +20,7 @@ export class SearchResultsComponent implements OnInit {
   // All search result data taken from search result service
   placeData: PlaceResult;
   serverData: any;
-  dataExists: Boolean;
+  loadingServerData: Boolean;
 
   // Parsed server data
   current_occupancy: number;
@@ -35,35 +35,49 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.searchResultService.currentPlaceData.subscribe((place) => {
       this.placeData = place;
-      this.clearResults();
       this.chRef.detectChanges();
     });
     this.searchResultService.currentServerData.subscribe((data) => {
       this.serverData = data;
-      if (this.serverData) {
-
-        // Calculate occupancy percent
-        this.occupancyPercent = Math.ceil((this.serverData.current_occupancy * 100) / data.max_occupancy);
-
-        // Set status label
-        if (this.occupancyPercent < 60) {
-          this.statusLabel = "Low occupancy";
-        } else {
-          this.statusLabel = "High occupancy";
-        }
-      }
+      this.updateSearchResults(data);
       this.chRef.detectChanges();
     });
-    this.searchResultService.currentDataExists.subscribe((data) => {
-      this.dataExists = data;
+    this.searchResultService.currentLoadingData.subscribe((val) => {
+      this.loadingServerData = val;
       this.chRef.detectChanges();
     });
   }
 
-  clearResults() {
-    this.occupancyPercent = null;
+  updateSearchResults(data) {
+
+    // Reset all fields
     this.current_occupancy = null;
     this.max_occupancy = null;
+    this.occupancyPercent = null;
+
+    if (!data) {
+      return;
+    }
+    
+    if (data.current_occupancy) {
+      this.current_occupancy = data.current_occupancy;
+    }
+
+    if (data.max_occupancy) {
+      this.max_occupancy = data.max_occupancy;
+    }
+
+    // Calculate occupancy percent and set status label
+    if (this.current_occupancy && this.max_occupancy) {
+      this.occupancyPercent = Math.ceil((this.current_occupancy * 100) / this.max_occupancy);
+
+      // Set status label
+      if (this.occupancyPercent < 60) {
+        this.statusLabel = "Low occupancy";
+      } else {
+        this.statusLabel = "High occupancy";
+      }
+    }
     this.chRef.detectChanges();
   }
 }

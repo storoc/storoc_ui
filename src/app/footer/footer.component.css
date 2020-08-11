@@ -25,10 +25,10 @@ li, a, button {
 }
 
 .footer-link {
-    padding: 0px 20px;
+    padding: 0px 30px;
     transition: all 0.15s ease 0s;
 }
 
 .footer-link:hover {
-    color: #0088a9
+    color: rgba(44, 160, 152, 1)
 }

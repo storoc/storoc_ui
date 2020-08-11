@@ -2,24 +2,23 @@ div:empty {
     display: none;
 }
 #search-results-container {
-    max-width: 300px;
+    flex: 1;
+    min-width: 300px;
     word-wrap: break-word;
-    background-color: #24252A;
-    color: #edf0f1;
+    background-color: white;
 
     padding: 12px 20px; 
-    border: 1px solid #2f3037;
-    border-radius: 5px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     box-shadow: 0 4px 8px -4px black;
 }
 #results-name {
-    font-size: x-large;
+    font-weight: 700;
 }
 #results-address {
-    font-size: medium;
 }
 #results-information {
-    font-size: medium;
 }
 
 #loading-text {
@@ -30,4 +29,8 @@ div:empty {
 #no-data-text {
     text-align: center;
     font-size: medium;
+}
+
+.separator {
+    margin: 10px;
 }

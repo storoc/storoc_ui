@@ -21,6 +21,7 @@ header {
 
 .logo {
     cursor: pointer;
+    color: #edf0f1;
     font-family: 'code_lightregular';
     font-size: 36px;
 }
@@ -28,7 +29,7 @@ header {
 button {
     width: 110px;
     padding: 9px 25px;
-    background-color: rgba(63, 171, 164, 1);
+    background-color: rgba(44, 160, 152, 1);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -36,5 +37,5 @@ button {
 }
 
 button:hover {
-    background-color: rgba(63, 171, 164, 0.8);
+    background-color: rgba(44, 160, 152, 0.8);
 }

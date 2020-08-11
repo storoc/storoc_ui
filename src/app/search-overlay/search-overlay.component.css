@@ -1,14 +1,12 @@
-#side-bar-container {
+#search-overlay-container {
     position: absolute;
+    width: 100%;
+    top: 60px;
+    bottom: 40px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    top: 60px;
+    align-items: flex-start;
     z-index: 1;
-}
-
-.side-bar-element {
-    flex-grow: 1;
 }

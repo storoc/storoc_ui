@@ -29,7 +29,7 @@ header {
 button {
     width: 110px;
     padding: 9px 25px;
-    background-color: rgba(44, 160, 152, 1);
+    background-color: rgba(44, 160, 152, 1); /* #2ca098 */ 
     border: none;
     border-radius: 50px;
     cursor: pointer;

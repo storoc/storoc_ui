@@ -8,9 +8,11 @@ div:empty {
     background-color: white;
 
     padding: 12px 20px; 
-    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px -4px black;
 }
 #results-name {
@@ -33,4 +35,12 @@ div:empty {
 
 .separator {
     margin: 10px;
+}
+
+.high-occupancy {
+    color: #a51d1d;
+}
+
+.low-occupancy {
+    color: #1da52d;
 }

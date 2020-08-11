@@ -15,21 +15,35 @@
         <hr class="separator">
 
         <!-- Results -->
-        <p *ngIf="serverData else noResponse">
-            <span id="results-information">
-                Occupancy: {{serverData.current_occupancy}}
-            </span>
-        </p>
+        <div *ngIf="serverData else noResponse">
 
-        <ng-template #noResponse>
-            <div *ngIf="!dataExists else loading" id="no-data-text">
-                This location does not have a STOROC sensor installed.
+
+            <div *ngIf="!maxDefined else noMaxDefined" id="results-information">
+                Occupancy: {{serverData.current_occupancy}}
             </div>
 
-            <ng-template #loading>
-                <div id="loading-text">Loading...</div>
-            </ng-template>
-        </ng-template>
-    </div>
+            <ng-template #noMaxDefined>
+                <div id="results-information">
+                    Status: 
+                    <span [ngClass]="{
+                        'low-occupancy' : occupancyPercent < 60,
+                        'high-occupancy' : occupancyPercent >= 60}">
+                        {{statusLabel}}
+                    </span>
+                    (at {{occupancyPercent}}% capacity)
 
-</div>
+                </div>
+            </ng-template>
+        </div>
+
+            <ng-template #noResponse>
+                <div *ngIf="!dataExists else loading" id="no-data-text">
+                    This location does not have a STOROC sensor installed.
+                </div>
+
+                <ng-template #loading>
+                    <div id="loading-text">Loading...</div>
+                </ng-template>
+            </ng-template>
+        </div>
+    </div>

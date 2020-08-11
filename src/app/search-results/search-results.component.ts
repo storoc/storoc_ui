@@ -22,21 +22,48 @@ export class SearchResultsComponent implements OnInit {
   serverData: any;
   dataExists: Boolean;
 
-  constructor(private searchResultService: SearchResultService, private chRef: ChangeDetectorRef) {
-  }
+  // Parsed server data
+  current_occupancy: number;
+  max_occupancy: number;
+
+  maxDefined: Boolean = false;
+  occupancyPercent: number;
+  statusLabel: string;
+
+  constructor(private searchResultService: SearchResultService, private chRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.searchResultService.currentPlaceData.subscribe((place) => {
       this.placeData = place;
+      this.clearResults();
       this.chRef.detectChanges();
     });
     this.searchResultService.currentServerData.subscribe((data) => {
       this.serverData = data;
+      if (this.serverData) {
+
+        // Calculate occupancy percent
+        this.occupancyPercent = Math.ceil((this.serverData.current_occupancy * 100) / data.max_occupancy);
+
+        // Set status label
+        if (this.occupancyPercent < 60) {
+          this.statusLabel = "Low occupancy";
+        } else {
+          this.statusLabel = "High occupancy";
+        }
+      }
       this.chRef.detectChanges();
     });
     this.searchResultService.currentDataExists.subscribe((data) => {
       this.dataExists = data;
       this.chRef.detectChanges();
     });
+  }
+
+  clearResults() {
+    this.occupancyPercent = null;
+    this.current_occupancy = null;
+    this.max_occupancy = null;
+    this.chRef.detectChanges();
   }
 }

@@ -53,6 +53,18 @@ export class MapComponent implements OnInit, AfterViewInit {
         stylers: [{color: '#9ca5b3'}]
       },
 
+      // Enable these points of interest
+      { 
+        featureType: "poi.business", 
+        elementType: "labels.icon",
+        stylers: [{color: "#428a66"}]
+      },
+      { 
+        featureType: "poi.school", 
+        elementType: "labels.icon",
+        stylers: [{color: "#42608a"}]
+      },
+
       // Disable these points of interest
       { featureType: "administrative", stylers: [{visibility: "off"}]},
       { featureType: "landscape", stylers: [{visibility: "off"}]},
@@ -148,6 +160,15 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.chRef.detectChanges();
       this.changeLocation(place);
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+        }
+      );
+    }
   }
 
   ngAfterViewInit() {
@@ -156,18 +177,6 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          this.map.setCenter(pos);
-        }
-      );
-    }
     this.marker.setMap(this.map);
     this.marker.setVisible(false);
   }

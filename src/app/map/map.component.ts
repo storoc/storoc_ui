@@ -13,8 +13,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
 
   map: google.maps.Map;
-  lat = 42.2780;
-  lng = -83.7382;
+  lat = 42.2959;
+  lng = -83.7103;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
   mapOptions: google.maps.MapOptions = {
@@ -160,15 +160,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.chRef.detectChanges();
       this.changeLocation(place);
     });
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-        }
-      );
-    }
   }
 
   ngAfterViewInit() {

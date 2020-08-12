@@ -27,6 +27,8 @@ export interface TokenPayload {
 })
 export class AuthenticationService {
 
+  apiUrl: string = 'https://storoc.live/business';
+
   private token: string;
 
   constructor(private http: HttpClient, private router: Router) { }

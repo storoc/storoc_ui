@@ -76,9 +76,9 @@ export class AuthenticationService {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(`/api/!{type}`, user);
+      base = this.http.post(`https://storoc.live/business/${type}`, user);
     } else {
-      base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}`}});
+      base = this.http.get(`https://storoc.live/business/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}`}});
     }
 
     const request = base.pipe(

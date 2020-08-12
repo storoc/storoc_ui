@@ -1,3 +1,11 @@
+li, a, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
 .page-container {
     display: flex;
     justify-content: center;
@@ -16,7 +24,7 @@
 
 .form-panel {
     display: flex;
-    height: 400px;
+    height: 420px;
     width: 340px;
     flex-direction: column;
     justify-content: center;
@@ -27,32 +35,33 @@
     border-radius: 5px;
     background-color: #24252A;
     box-shadow: 0 4px 8px -4px black;
-
     color: #edf0f1;
 }
 
 .form-group {
+    width: 280px;
     padding-bottom: 16px;
 }
+
 .input {
-    width: 280px;
-    padding: 12px 20px; 
+    width: 100%;
+    padding: 12px 20px;
     border: none;
     border-bottom: 1px solid #fff;
-
 }
 
 .horizontal-center {
     display: flex;
     justify-content: center;
-  }
+}
 
 button {
     margin: 20px;
     color: #edf0f1;
     width: 110px;
     padding: 9px 25px;
-    background-color: rgba(44, 160, 152, 1); /* #2ca098 */ 
+    background-color: rgba(44, 160, 152, 1);
+    /* #2ca098 */
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -61,4 +70,18 @@ button {
 
 button:hover {
     background-color: rgba(44, 160, 152, 0.8);
+}
+
+
+.register-link {
+    padding: 0px 30px;
+    transition: all 0.15s ease 0s;
+}
+
+.register-link:visited {
+    color: rgba(34, 150, 142, 1);
+}
+
+.register-link:hover {
+    color: rgba(44, 160, 152, 1);
 }

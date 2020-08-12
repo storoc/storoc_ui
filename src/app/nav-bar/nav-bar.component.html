@@ -3,5 +3,17 @@
         STOROC
     </a>
 
-    <a class="cta" routerLink="/login"><button (click)="this.resetPage()">Login</button></a>
+    <div>
+        <a *ngIf="!auth.isLoggedIn()" routerLink="/login">
+            <button (click)="this.resetPage()">Sign In</button>
+        </a>
+    
+        <a *ngIf="auth.isLoggedIn()" routerLink="/profile">
+            <button (click)="this.resetPage()">{{ auth.getUserDetails()?.name }}</button>
+        </a>
+    
+        <a *ngIf="auth.isLoggedIn()">
+            <button (click)="this.resetPage(); auth.logout()">Logout</button>
+        </a>
+    </div>
 </header>

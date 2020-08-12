@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResultService } from '../search-result.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { SearchResultService } from '../search-result.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private searchResultService: SearchResultService) { }
+  constructor(private searchResultService: SearchResultService, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }

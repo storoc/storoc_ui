@@ -12,14 +12,14 @@ div:empty {
     margin-right: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px -4px black;
 }
 #results-name {
     font-weight: 700;
 }
 #results-address {
-    
+
 }
 
 #loading-text {

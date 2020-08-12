@@ -58,13 +58,16 @@ export class SearchResultsComponent implements OnInit {
     if (!data) {
       return;
     }
-    
+
     if (data.current_occupancy) {
       this.current_occupancy = data.current_occupancy;
     }
 
     if (data.max_occupancy) {
+      this.maxDefined = true;
       this.max_occupancy = data.max_occupancy;
+    } else {
+      this.maxDefined = false;
     }
 
     // Calculate occupancy percent and set status label

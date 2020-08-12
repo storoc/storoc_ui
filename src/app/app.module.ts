@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthenticationService } from './authentication.service';
 
 import { environment } from 'src/environments/environment';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { environment } from 'src/environments/environment';
     RegisterComponent,
     LoginComponent,
     NavBarComponent,
-    SearchOverlayComponent
+    SearchOverlayComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

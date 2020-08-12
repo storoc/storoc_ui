@@ -6,6 +6,8 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { ApplicationStateService } from './application-state.service';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const desktop_routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
@@ -13,7 +15,8 @@ const desktop_routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ];
 
 const mobile_routes: Routes = [

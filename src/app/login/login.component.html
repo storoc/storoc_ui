@@ -1,18 +1,37 @@
-<div id="form-panel">
-  
-  <form (submit)="login()">
+<div class="page-container">
 
-    <div class="form-group">
-      <label for="email">Email address</label>
-      <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
-    </div>
+  <!-- Form Panel -->
+  <div class="form-panel">
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
-    </div>
+    <!-- Logo -->
+    <a class="logo" routerLink="/home">
+      STOROC
+    </a>
 
-    <button type="submit" class="btn btn-default">Sign in!</button>
+    <!-- Form -->
+    <form (submit)="login()">
 
-  </form>
+      <div class="form-group">
+        <label for="email">Email</label><br>
+        <input type="email" class="form-control input" name="email" placeholder="Enter email"
+          [(ngModel)]="credentials.email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label><br>
+        <input type="password" class="form-control input" name="password" placeholder="Password"
+          [(ngModel)]="credentials.password">
+      </div>
+
+      <div class="horizontal-center">
+        <a class="register-link" routerLink="/register">
+          Create account
+        </a>
+      </div>
+      
+      <div class="horizontal-center">
+        <button type="submit" class="submit-button">Sign in!</button>
+      </div>
+    </form>
+  </div>
 </div>

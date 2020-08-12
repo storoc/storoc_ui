@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subscription, Subject, Observable } from 'rxjs';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription, Subject, Observable, interval } from 'rxjs';
 import { ApiService } from './api.service';
 import PlaceResult = google.maps.places.PlaceResult;
 
@@ -29,10 +29,10 @@ export class SearchResultService {
     this.apiService.getLocationData(place_id).subscribe(
       data => { this.serverDataSource.next(data); },
       err => console.error(err),
-      () => { 
+      () => {
         console.log('Finished loading location data from storoc server');
         this.loadingDataSource.next(false);
-       }
+      }
     );
   }
 
@@ -42,5 +42,27 @@ export class SearchResultService {
     this.placeDataSource.next(place);
     // Update server data
     this.setLocationData(place.place_id);
+  }
+
+  // Clear currently saved data
+  clearData() {
+    this.serverDataSource.next(null);
+    this.placeDataSource.next(null);
+  }
+
+  refresh() {
+
+    // API call
+    if (this.placeDataSource.getValue()) {
+      this.apiService.getLocationData(this.placeDataSource.getValue().place_id).subscribe(
+        data => { this.serverDataSource.next(data); },
+        err => console.error(err),
+        () => {
+          console.log('Finished loading UPDATED location data from storoc server');
+          this.loadingDataSource.next(false);
+        }
+      );
+    }
+
   }
 }

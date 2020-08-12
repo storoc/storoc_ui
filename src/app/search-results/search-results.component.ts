@@ -3,6 +3,9 @@ import { SearchResultService } from '../search-result.service';
 import { ChangeDetectorRef } from '@angular/core';
 
 import PlaceResult = google.maps.places.PlaceResult;
+import { Subscription, Observable, timer, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ApiService } from '../api.service';
 
 /*
   The search-result component receives PlaceResults from
@@ -30,7 +33,10 @@ export class SearchResultsComponent implements OnInit {
   occupancyPercent: number;
   statusLabel: string;
 
-  constructor(private searchResultService: SearchResultService, private chRef: ChangeDetectorRef) {}
+  // Refresh loaded data every 2 seconds
+  autoRefresh: Subscription;
+
+  constructor(private searchResultService: SearchResultService, private apiService: ApiService, private chRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.searchResultService.currentPlaceData.subscribe((place) => {
@@ -46,14 +52,23 @@ export class SearchResultsComponent implements OnInit {
       this.loadingServerData = val;
       this.chRef.detectChanges();
     });
+
+    const source = interval(1000);
+    this.autoRefresh = source.subscribe(val => this.refreshResults());
   }
 
-  updateSearchResults(data) {
+  ngOnDestroy() {
+    this.autoRefresh && this.autoRefresh.unsubscribe();
+  }
 
-    // Reset all fields
+  resetFields() {
     this.current_occupancy = null;
     this.max_occupancy = null;
     this.occupancyPercent = null;
+  }
+
+  updateSearchResults(data) {
+    this.resetFields();
 
     if (!data) {
       return;
@@ -82,5 +97,13 @@ export class SearchResultsComponent implements OnInit {
       }
     }
     this.chRef.detectChanges();
+  }
+
+  // Refresh serverData
+  refreshResults() {
+
+    if (this.serverData) {
+      this.searchResultService.refresh();
+    }
   }
 }

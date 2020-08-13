@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +9,14 @@ import { AuthenticationService, UserDetails } from '../authentication.service';
 })
 export class ProfileComponent implements OnInit {
 
-  details: UserDetails;
+  apiUrl: string = 'https://storoc.live/api/store_max';
+  apiUrlAppended: string;
+  place_id: string = "";
 
-  constructor(private auth: AuthenticationService) { }
+  details: UserDetails;
+  maxOccupancy: number;
+
+  constructor(private auth: AuthenticationService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.auth.profile().subscribe(user => {
@@ -20,4 +26,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  updateCapacity() {
+    this.apiUrlAppended = this.apiUrl + '?unique_id=' + this.place_id;
+    console.log('made api call to ', this.apiUrlAppended);
+    return this.httpClient.post(this.apiUrlAppended, this.maxOccupancy);
+  }
 }

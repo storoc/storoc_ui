@@ -173,8 +173,13 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   changeLocation(place: PlaceResult) {
+
     if (this.coordinates && place) {
-      this.coordinates = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+      
+      if (place.geometry) {
+        this.coordinates = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+      }
+      
     }
 
     if (this.map) {

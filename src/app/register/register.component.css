@@ -58,7 +58,6 @@ li, a, button {
 button {
     margin: 20px;
     color: #edf0f1;
-    width: 110px;
     padding: 9px 25px;
     background-color: rgba(44, 160, 152, 1);
     /* #2ca098 */
@@ -66,6 +65,10 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.15s ease 0s;
+
+    /* neumorphism effect */
+    background: linear-gradient(145deg, #27282d, #202126);
+    box-shadow: 3px 3px 6px #161619, -3px -3px 6px #32343b;
 }
 
 button:hover {

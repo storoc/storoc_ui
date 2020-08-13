@@ -9,7 +9,9 @@
         </a>
     
         <a *ngIf="auth.isLoggedIn()" routerLink="/profile">
-            <button (click)="this.resetPage()">{{ auth.getUserDetails()?.name }}</button>
+            <button (click)="this.resetPage()">
+                Settings
+            </button>
         </a>
     
         <a *ngIf="auth.isLoggedIn()">

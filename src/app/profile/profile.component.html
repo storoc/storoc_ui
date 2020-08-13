@@ -1,10 +1,31 @@
-<div class="form-horizontal">
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Full name</label>
-      <p class="form-control-static">{{ details?.name }}</p>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Email</label>
-      <p class="form-control-static">{{ details?.email }}</p>
+<div class="page-container">
+
+    <!--Control Panel -->
+    <div class="control-panel">
+  
+      <!-- Logo -->
+      <a class="logo" routerLink="/home">
+        STOROC
+      </a>
+
+      <div>
+          <div class="form-group">
+            <p>{{details?.name}}</p>
+          </div>
+          <div class="form-group">
+            <p>{{details?.email}}</p>
+          </div>
+          <div class="form-group">
+            <label>Set new capacity</label><br>
+            <input class="input" type="number" placeholder="Enter location capacity" [(ngModel)]="maxOccupancy">
+          </div>
+
+          <div class="horizontal-center">
+            <button type="submit" class="submit-button" (click)="this.updateCapacity()" routerLink='/home'>Save changes</button>
+          </div>
+
+      </div>
+  
+
     </div>
   </div>
